@@ -1,0 +1,71 @@
+# This file was auto-generated from Django-Deploy
+# DO NOT EDIT MANUALLY
+
+{% load deployment_filters %}
+
+
+
+{% block wsgi %}
+
+import os, sys
+
+================
+
+{% block syspath %}
+
+sys.path = [
+    {% block prepath %}
+    
+    {% endblock prepath %}
+    
+    {% for element in sys.path %}
+        "{{ element|reverse }}"
+    {% endfor %}
+    
+    {% block postpath %}
+    
+    {% endblock postpath %}
+]
+
+{% endblock syspath %}
+
+================
+
+{% block environment %}
+
+os.environ["DJANGO_HOSTNAME"] = "{% if options.server_name %}\
+                                        {{ options.server_name }}\
+                                 {% elif settings.ALLOWED_HOSTS %}\
+                                        {{ settings.ALLOWED_HOSTS|first }}\
+                                 {% else %}\
+                                        localhost\
+                                 {% endif %}"
+
+os.environ["DJANGO_SETTINGS_MODULE"] = "{{ settings.SETTINGS_MODULE }}"
+
+    {% block environment-addons %}
+
+    {% endblock environment-addons %}   
+
+{% endblock environment %}
+
+=================
+
+{% block erroneous %}
+# Any and all additional WSGI code goes here:
+{% endblock erroneous %}
+
+=================
+
+# Prepare application for WSGI processing
+{% block wsgi_handler %}
+
+from django.core.handlers.wsgi import WSGIHandler
+
+application = WSGIHandler()
+
+{% block wsgi_handler %}
+
+=================
+
+{% endblock wsgi %}
