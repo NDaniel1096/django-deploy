@@ -1,0 +1,16 @@
+# Files that should not be tracked
+# using Git
+
+
+# Compiled Python Files
+*.pyc
+
+# Build and Distribution
+build
+dist
+
+# Git Tracking
+.git
+
+# Egg Package
+*.egg-info
