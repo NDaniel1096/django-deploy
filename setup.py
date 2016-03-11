@@ -6,7 +6,6 @@ from setuptools import setup, find_packages
 setup(
     name='django-deployment',
     description="Create the correct files to support deployment under apache.",
-    long_description=open('README.rst', 'r').read(),
     keywords='django, security, authentication',
     author='Nick Daniel',
     author_email='ndaniel@nimdapro.com',
