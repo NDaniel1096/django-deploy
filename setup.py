@@ -2,11 +2,9 @@
 # -*- coding: utf-8 -*-
 
 from setuptools import setup, find_packages
-import deployment
 
 setup(
     name='django-deployment',
-    version=deployment.get_version(),
     description="Create the correct files to support deployment under apache.",
     long_description=open('README.rst', 'r').read(),
     keywords='django, security, authentication',
